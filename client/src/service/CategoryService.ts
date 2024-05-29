@@ -17,7 +17,7 @@ const findAll = async (): Promise<any> => {
     let response;
     try {
         response = await api.get(URL);
-    } catch (erronpmr: any) {
+    } catch (error: any) {
         response = error.response;
     }
     return response;

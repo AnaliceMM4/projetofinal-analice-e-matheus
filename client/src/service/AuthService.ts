@@ -4,7 +4,7 @@ import { IUserLogin, IUserSignup } from "@/commons/interfaces";
 const signup = async (user: IUserSignup): Promise<any> => {
   let response;
   try {
-    response = await api.post("/users", user);
+    response = await api.post("/users/create", user);
   } catch (error: any) {
     response = error.response;
   }

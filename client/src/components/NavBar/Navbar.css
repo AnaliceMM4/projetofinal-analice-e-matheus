@@ -1,0 +1,60 @@
+div .nav {
+    background-color: rgb(13, 131, 121);
+    padding: 1rem 0;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-item {
+    padding: 0.5rem;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link.active {
+    color: lightgray; /* Define a cor dos links ativos */
+    font-weight: bold; 
+ }
+  
+  .nav-link:hover {
+    color: rgb(3, 49, 61);
+  }
+  
+  .logout-button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    color: gray;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

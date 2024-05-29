@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/utfpr-logo.png";
 import AuthService from "@/service/AuthService";
+import './Navbar.css';
 
 export function NavBar() {
   const onClickLogout = () => {
@@ -9,7 +10,7 @@ export function NavBar() {
   };
 
   return (
-    <div className="bg-white shadow-sm mb-2">
+    <div className=" shadow-sm mb-2 nav">
       <div className="container">
         <nav className="navbar navbar-light navbar-expand">
           <Link to="/" className="navbar-brand">
