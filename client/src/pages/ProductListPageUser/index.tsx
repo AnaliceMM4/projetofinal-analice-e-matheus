@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IProduct } from "@/commons/interfaces";
 import ProductService from "@/service/ProductService";
+//import { FaShoppingCart } from 'react-icons/fa';
+
 
 export function ProductListPage() {
   const [data, setData] = useState<IProduct[]>([]);
   const [apiError, setApiError] = useState("");
-  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
-  const { findAll, remove } = ProductService;
-
+  const [showDeleteMessage] = useState(false);//setShowDeleteMessage
+  const { findAll } = ProductService;
+//remove
   useEffect(() => {
     loadData();
   }, []);
@@ -23,23 +25,23 @@ export function ProductListPage() {
     }
   };
 
-  const onRemove = async (id: number) => {
-    const response = await remove(id);
-    if (response.status === 204 || response.status === 200) {
-      setShowDeleteMessage(true);
+  // const onRemove = async (id: number) => {
+  //   const response = await remove(id);
+  //   if (response.status === 204 || response.status === 200) {
+  //     setShowDeleteMessage(true);
 
-      data.filter((product) => {
-        return product.id !== id;
-      });
+  //     data.filter((product) => {
+  //       return product.id !== id;
+  //     });
 
-      setTimeout(() => {
-        setShowDeleteMessage(false);
-      }, 1500);
-      setApiError("");
-    } else {
-      setApiError("Falha ao remover o produto");
-    }
-  };
+  //     setTimeout(() => {
+  //       setShowDeleteMessage(false);
+  //     }, 1500);
+  //     setApiError("");
+  //   } else {
+  //     setApiError("Falha ao remover o produto");
+  //   }
+  // };
 
   return (
     <main className="container">
@@ -51,7 +53,23 @@ export function ProductListPage() {
           Novo Produto
         </Link>
       </div>
-      <table className="table table-striped">
+
+      {/* <div className="card" style={{ width: '200px' }}>
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" className="card-img-top" alt="Fissure in Sandstone" />
+        <div className="card-body">
+
+          <h5 className="card-title">Card title</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#!" className="btn btn-primary" data-mdb-ripple-init>Button</a>
+        </div>
+      </div> */}
+      
+
+
+      {/* <Link to={`/products/${product.id}`} className="btn btn-primary">
+              View Details
+            </Link> */}
+      {/* <table className="table table-striped">
         <thead>
           <tr>
             <th>Código</th>
@@ -60,8 +78,8 @@ export function ProductListPage() {
             <th>Categoria</th>
             <th>Ações</th>
           </tr>
-        </thead>
-        <tbody>
+        </thead> */}
+      {/* <tbody>
           {data.map((product: IProduct) => (
             <tr key={product.id}>
               <td>{product.id}</td>
@@ -85,14 +103,16 @@ export function ProductListPage() {
               </td>
             </tr>
           ))}
-        </tbody>
-      </table>
+        </tbody> */}
+      {/* </table> */}
       {apiError && <div className="alert alert-danger">{apiError}</div>}
-      {showDeleteMessage && (
-        <div className="alert alert-success">
-          Registro removido com sucesso!
-        </div>
-      )}
-    </main>
+      {
+        showDeleteMessage && (
+          <div className="alert alert-success">
+            Registro removido com sucesso!
+          </div>
+        )
+      }
+    </main >
   );
 }
