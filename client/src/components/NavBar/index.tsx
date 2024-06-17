@@ -23,7 +23,7 @@ export function NavBar() {
                 to="/"
                 className={(navData) =>
                   navData.isActive ? "nav-link active" : "nav-link "
-                  
+
                 }
               >
                 Home

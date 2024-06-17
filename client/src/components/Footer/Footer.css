@@ -1,0 +1,49 @@
+:root {
+    --red: rgb(215, 15, 26);
+    --gray: rgb(54, 51, 52);
+    --purpleLight: rgb(172, 47, 120);
+    --purpleDark: rgb(159, 21, 67);
+    --redLight: rgb(216, 59, 76);
+}
+
+p{
+
+    color: white;
+}
+
+h5{
+    color: var(--red);
+}
+
+.bgcb{
+    background-color: black;
+}
+
+.bgcw{
+    background-color: white;
+}
+
+
+.logo{
+    width: 10rem;
+    height: 10rem;
+}
+
+.utfprLogo{
+    width: 5rem;
+    height: 5rem;
+}
+.logo2{
+    width: 20rem;
+    height: 9rem;
+}
+
+.cartoes{
+   max-width: 15%;
+   margin-bottom: 0.2rem;
+   margin-right: 0.2rem;
+}
+
+.c-red{
+color: var(--red);
+}
