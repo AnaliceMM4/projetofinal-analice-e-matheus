@@ -9,6 +9,8 @@ import { ProductFormPage } from "@/pages/ProductFormPage";
 import { ProductListPage } from "@/pages/ProductListPageUser";
 import { ProductListPageV2 } from "@/pages/ProductListPageV2";
 import { ProductDetailsPage } from "@/pages/ProductDetailsPage";
+import { ProductsCartPage } from "@/pages/ProductsCartPage";
+
 //import { ProductFormPageV2 } from "@/pages/ProductFormPageV2";
 
 export function BaseRoutes() {
@@ -30,6 +32,9 @@ export function BaseRoutes() {
           <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/products" element={<ProductListPage />} />
           < Route path="/products-v2" element={<ProductListPageV2 />} />
+          {/* < Route path="/requestItens/:id" element={<ProductsCartPage />} /> */}
+          < Route path="/orderItens/:id" element={<ProductsCartPage />} />
+          
           {/* <Route path="/products-v2/new" element={<ProductFormPageV2 />} /> */}
           {/* <Route path="/products-v2/:id" element={<ProductFormPageV2 />} /> */}
 

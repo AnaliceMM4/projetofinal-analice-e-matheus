@@ -7,35 +7,36 @@
 }
 
 p{
-
     color: white;
+    font-size: .9rem;
 }
 
 h5{
     color: var(--red);
+    
 }
 
 .bgcb{
     background-color: black;
 }
 
-.bgcw{
+/* .bgcw{
     background-color: white;
-}
+} */
 
 
 .logo{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
 }
 
 .utfprLogo{
-    width: 5rem;
-    height: 5rem;
+    width: 7rem;
+    height: auto;
 }
 .logo2{
-    width: 20rem;
-    height: 9rem;
+    width: auto;
+    height: 15rem;
 }
 
 .cartoes{

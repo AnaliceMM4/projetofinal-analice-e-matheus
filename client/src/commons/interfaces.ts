@@ -22,3 +22,18 @@ export interface IProduct {
   urlImage: string;
   category: ICategory;
 }
+
+export interface IOrder{
+  id?: number;
+  data: Date;
+  user: IUserLogin;
+  //payment;
+}
+
+export interface IOrderItens{
+  id?: number;
+  product: IProduct;
+  preco: number;
+  quantidade: number;
+
+}

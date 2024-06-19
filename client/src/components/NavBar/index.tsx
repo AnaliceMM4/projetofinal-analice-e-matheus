@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '@/images/logo.png'; // Caminho para o logo na pasta images
 import AuthService from "@/service/AuthService";
 import './Navbar.css';
+import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 
 export function NavBar() {
   const onClickLogout = () => {
@@ -13,7 +14,7 @@ export function NavBar() {
   return (
     <div className="shadow-sm mb-2 nav">
       <div className="container">
-        <nav className="navbar navbar-light navbar-expand">
+        <nav className="navbar navbar-white navbar-expand">
           <Link to="/" className="navbar-brand">
             <img src={logo} className="logo" alt="Overclock" />
           </Link>
@@ -61,9 +62,20 @@ export function NavBar() {
               </NavLink>
             </li>
 
-            <li className="nav-item">
-              <button className="btn btn-light" onClick={onClickLogout}>
+              
+            <li className="nav-item text-white">
+            <button className="nav-link">
+
+            <FaUserAlt className="text-white" />
+            </button>
+              {/* <button className="btn btn-light" onClick={onClickLogout}>
                 &times; Sair
+              </button> */}
+            </li>
+
+            <li className="nav-item">
+              <button className="nav-link">
+                <FaShoppingCart className="text-white" />
               </button>
             </li>
           </ul>

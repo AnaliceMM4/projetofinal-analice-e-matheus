@@ -1,14 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductService from "@/service/ProductService";
 import { IProduct } from "@/commons/interfaces";
 import { FaShoppingCart } from "react-icons/fa";
+import { GiMoneyStack } from "react-icons/gi";
 
 export function Product() {
 
     const [data, setData] = useState<IProduct[]>([]);
     const [apiError, setApiError] = useState("");
-  //  const [showDeleteMessage] = useState(false);//setShowDeleteMessage
+    //  const [showDeleteMessage] = useState(false);//setShowDeleteMessage
     const { findAll } = ProductService;
     //remove
 
@@ -28,38 +29,50 @@ export function Product() {
 
     return (
 
-            <div className="card-container" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {data.map((product: IProduct) => (
+        <div className="d-flex flex-wrap justify-content-center align-items-center p-4" >
+            {data.map((product: IProduct) => (
 
-                    //index: number) => (
-                    <div className="card-wrapper" key={product.id} style={{ marginRight: '1rem', marginBottom: '1rem' }}>
-                        <div className="card" style={{ width: '12rem', height: '25rem' }}>
-                            <div className="d-flex justify-content-center align-items-center" style={{ height: '10rem' }}>
-                                <img src={product.urlImage} className="card-img-top" alt={product.name} style={{ width: '10rem', height: '10rem' }} />
-                            </div>
-
-                            <div className="card-body ">
-                                <h5 className="card-title" style={{ fontSize: '1rem' }}>{product.name}</h5>
-                                <p className="card-title font-secondary " style={{ fontSize: '1.4rem', }} >R$ {product.price}</p>
-                                {/* <p className="card-text">Category: {product.category!.name}</p> */}
-                                <div className="d-grid ">
-
-                                    {/* <Link to={``} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
-                                        <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
-                                    </Link> */}
-                                    <Link to={`/products/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
-                                        <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
-                                    </Link>
-                                    {/*  <FaShoppingCart /> */}
-                                </div>
-
-                            </div>
+                //index: number) => (
+                <div className="" key={product.id} style={{ marginBottom: '3rem', padding: '.7rem' }} >
+                    <div className="card" style={{ width: '15rem', height: '28rem' }}>
+                        <div className="d-flex justify-content-center align-items-center" style={{ padding: '1rem', margin: '1.4rem', height: '8rem' }}>
+                            <Link to={`/products/${product.id}`} >
+                                <img src={product.urlImage} className="card-img-top" alt={product.name} />
+                            </Link>
                         </div>
 
-                    </div>
-                ))}
+                        <div className="card-body">
 
-            </div>
+                            <div className="mb-3">
+                                <h5 className="card-title">{product.name}</h5>
+                            </div>
+
+                            <div className="mt-4 p-2">
+                                <p className="card-title font-secondary d-flex align-items-center " style={{ fontSize: '1.4rem' }}>
+                                    <GiMoneyStack style={{ marginRight: '10px' }} /> {/* Ícone com margem à direita */}
+                                    R$ {product.price}
+                                </p>
+                            </div>
+
+
+                            {/* <p className="card-text">Category: {product.category!.name}</p> */}
+                            <div className="d-grid">
+
+                                {/* <Link to={``} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
+                                        <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
+                                    </Link> */}
+                                <Link to={`/products/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
+                                    <FaShoppingCart style={{ marginRight: '.5rem', padding: 'auto' }} /> COMPRAR
+                                </Link>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+
+        </div>
 
     );
 };

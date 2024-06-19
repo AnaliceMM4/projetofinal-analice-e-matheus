@@ -14,14 +14,15 @@ import './Footer.css';
 export function Footer() {
     return (
         <>
-            <div className="row bg-dark c-red box-s1 pt-2 w-100 ml-0">
-                <div className="col ms-3">
+            <div className="row bg-dark c-red box-s1 pt-2 ml-0 ">
+
+                <div className="col ms-3 mt-4">
                     <h5>INSTITUCIONAL</h5>
                     <p><a href="">Quem Somos</a></p>
                     <p><a href="">Nossas lojas</a></p>
                     <p><a href="">Localização</a></p>
                 </div>
-                <div className="col">
+                <div className="col mt-4">
                     <h5>DÚVIDAS</h5>
                     <p><a href="">Entrega</a></p>
                     <p><a href="">Garantia</a></p>
@@ -29,24 +30,24 @@ export function Footer() {
                     <p><a href="">Formas de Pagamento</a></p>
                     <p><a href="">Sobre Boletos</a></p>
                 </div>
-                <div className="col">
+                <div className="col mt-4">
                     <h5>AJUDA</h5>
                     <p><a href="" className="focus-ring-secondary">SAC</a></p>
                     <p><a href="">Fale conosco</a></p>
                     <p><a href="">Termos de aceite</a></p>
                     <p><a href="">Políticas de Privacidade</a></p>
                 </div>
-                <div className="col">
+                <div className="col mt-4">
                     <h5>PAGAMENTO</h5>
                     <div className="d-flex">
-                    <img src={cartaoAE} className="cartoes" alt="cartaoAE" />
-                    <img src={cartaoDn} className="cartoes" alt="cartaoDn" />
-                    <img src={cartaoElo} className="cartoes" alt="CartaoElo" />
+                        <img src={cartaoAE} className="cartoes" alt="cartaoAE" />
+                        <img src={cartaoDn} className="cartoes" alt="cartaoDn" />
+                        <img src={cartaoElo} className="cartoes" alt="CartaoElo" />
                     </div>
                     <div className="d-flex">
-                    <img src={cartaoHyper} className="cartoes" alt="cartaoHyper" />
-                    <img src={cartaoMasterCard} className="cartoes" alt="cartaoMasterCard" />
-                    <img src={cartaoVisa} className="cartoes" alt="cartaoVisa" />
+                        <img src={cartaoHyper} className="cartoes" alt="cartaoHyper" />
+                        <img src={cartaoMasterCard} className="cartoes" alt="cartaoMasterCard" />
+                        <img src={cartaoVisa} className="cartoes" alt="cartaoVisa" />
                     </div>
                     <div className="mt-2">
                         <p>Receba Ofertas exclusivas por E-mail</p>
@@ -58,15 +59,18 @@ export function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="bgcb d-flex pt-2 c-red">
+                <div className="bgcb d-flex pt-2 c-red p-4">
+                    {/* <div className="p-4"> */}
+
                     <div>
                         <img src={logo2} className="logo2" alt="Overclock2" />
                     </div>
-                    <div>
-                        <h5>OVERCLOCK INFORMÁTICA® É UMA MARCA REGISTRADA DE UTF & LAEC INFORMATICA LTDA | CNPJ:
-                            23.276.795/0001-13 | IE: 434.013.410.110</h5>
+                    <div className='col-md-6 mt-4'>
+
+                        <h6>OVERCLOCK INFORMÁTICA® É UMA MARCA REGISTRADA DE UTF & LAEC INFORMATICA LTDA | CNPJ:
+                            23.276.795/0001-13 | IE: 434.013.410.110</h6>
                         <p>Avenida Santos Dumont, 8799 - Aventureiro, Joinville - SC - 89436-435</p>
-                        <p>___</p>
+                        {/* <p>___</p> */}
                         <p className="text-secondary">Preços e condições de pagamento exclusivos para compras via internet e
                             podem variar nas lojas físicas. Os preços anunciados neste site ou via e-mail promocional podem
                             ser alterados sem prévio aviso. A NinjaDrive Informática não é responsável por erros
@@ -74,18 +78,21 @@ export function Footer() {
                             de acordo com o fornecedor/lote do fabricante. Ofertas válidas até o término de nossos estoques.
                             Vendas sujeitas à análise e confirmação de dados.</p>
                     </div>
-                    <div className="ms-3">
-                        <h5>CERTIFICADOS DE SEGURANÇA</h5>
-                        <p>___</p>
+                    <div className='col-md-4 mt-4 text-center'>
+                        <h6>CERTIFICADOS DE SEGURANÇA</h6>
+                        {/* <p>___</p> */}
                         <div className="bgcw box-s1">
-                            <div >
-                                <img src={logo} className="logo" alt="Overclock" />
+                            <div className="d-flex justify-content-center align-items-center">
+                                <img src={logo} className="logo me-3" alt="Overclock" />
                                 <img src={utfprLogo} className="utfprLogo" alt="UtfprLogo" />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
+            {/* </div> */}
+
         </>
     );
 }
