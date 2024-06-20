@@ -60,9 +60,7 @@ public class WebSecurity {
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/error/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/categories/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/products/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
         );
         http.authenticationManager(authenticationManager)

@@ -19,6 +19,7 @@
     "framer-motion": "^11.2.6",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "mdb-react-ui-kit": "^8.0.0",
     "mdb-ui-kit": "^7.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

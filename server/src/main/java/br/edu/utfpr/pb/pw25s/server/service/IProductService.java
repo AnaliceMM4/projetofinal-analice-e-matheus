@@ -5,11 +5,12 @@
 package br.edu.utfpr.pb.pw25s.server.service;
 
 import br.edu.utfpr.pb.pw25s.server.model.Product;
+import java.util.List;
 
 /**
  *
  * @author mathe
  */
 public interface IProductService extends ICrudService<Product, Long>{
-    
+    List<Product> findByCategory(Long categoryId);
 }

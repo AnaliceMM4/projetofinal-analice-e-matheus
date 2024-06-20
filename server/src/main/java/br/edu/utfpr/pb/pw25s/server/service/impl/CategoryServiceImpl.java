@@ -18,15 +18,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoryServiceImpl extends CrudServiceImpl<Category, Long> implements ICategoryService{
 
-    private final CategoryRepository CategoryRepository;
+    private final CategoryRepository categoryRepository;
 
     public CategoryServiceImpl(CategoryRepository categoryRepository) {
-        this.CategoryRepository = categoryRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
     protected JpaRepository<Category, Long> getRepository() {
-        return null;
+        return categoryRepository;
 
     }
 

@@ -53,4 +53,9 @@ public class ProductController extends CrudController<Product, ProductDTO, Long>
         Product product = productService.findOne(id);
         return ResponseEntity.ok(product);
     }
+
+    @GetMapping("/categories/{categoryId}")
+    public List<Product> findByCategory(@PathVariable Long categoryId) {
+        return productService.findByCategory(categoryId);
+    }
 }

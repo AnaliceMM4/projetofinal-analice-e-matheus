@@ -37,7 +37,7 @@ public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implement
 
     public List<ProductDTO> findAllProducts() {
 
-        List<Product> productsList = productRepository.findAll();   
+        List<Product> productsList = productRepository.findAll();
         List<ProductDTO> productsDTOList = new ArrayList<>();
         for (Product product : productsList) {
             CategoryDTO category = new CategoryDTO();
@@ -61,6 +61,11 @@ public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implement
     public Product findOne(Long id) {
 
         return super.findOne(id);
+    }
+
+    @Override
+    public List<Product> findByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
     }
 
 }
