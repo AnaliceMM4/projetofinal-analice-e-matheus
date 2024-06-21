@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { IProduct } from "@/commons/interfaces";
 import { FaBarcode, FaCreditCard, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { MdOutlinePayments, MdOutlinePix } from "react-icons/md";
+import { MdLocalShipping, MdOutlinePayments, MdOutlinePix } from "react-icons/md";
 import { AddCart } from "../AddCart";
 import { CiCreditCard2 } from "react-icons/ci";
+import { right } from "@popperjs/core";
 
 interface ProductDetailsProps {
     product: IProduct;
@@ -23,21 +24,58 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setShowModal(false);
     };
 
+
+    const calcularParcela = (price: number) => {
+        const valorParcela = price / 10;
+        const formattedParcela = valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
+        return formattedParcela;
+    };
+
+
+    // // Função para formatar o texto de descrição
+    const formatDescription = (description: string) => {
+        if (!description) return "";
+        return description.split(",").map(line => (
+            <span>
+                {"- "}
+                {line.trim()}
+                <br />
+            </span>
+        ));
+    };
+
     return (
         <div className="row my-4 justify-content-center">
+
+            <div className="d-flex align-items-center" style={{ paddingLeft: '8rem', marginLeft: '7rem' }}>
+           
+            <Link to={`/categories/${product.category.id}`} >
+                <h5 className="text-start">{product.category.name} - 
+                    <span className="text-danger small"> Código: {product.id}</span>
+                </h5>
+                </Link>
+            </div>
+
             <div className="col-md-6 d-flex justify-content-center">
+
                 <div className="card border border-danger">
                     <img src={product.urlImage} className="card-img-top img-fluid" alt={product.description} style={{ maxWidth: '100%', height: '35rem', objectFit: 'contain' }} />
                 </div>
+
             </div>
 
             <div className="col-md-4 ">
                 <div className="card">
                     <div className="card-body">
-                        <h4>{product.description}</h4>
+                        <h4>{product.name}</h4>
                         <p className="text-success">PRODUTO DISPONÍVEL</p>
                         <h1 style={{ color: 'red', fontSize: '2.5rem' }}>R$ {product.price}</h1>
 
+                        {/* Espaço para exibir o valor da parcela */}
+                        <p className="text-muted" style={{ fontSize: '1rem', color: 'black' }}>em até 10x de {calcularParcela(product.price)}</p>
+                        <p className="text-success d-flex align-items-center fs-6">
+                            <MdLocalShipping style={{ marginRight: '10px' }} /> Frete Grátis!
+                        </p>
                     </div>
                     <button className=" d-flex align-items-center fs-5 p-4" onClick={openModal}>
                         <MdOutlinePayments style={{ marginRight: '5px' }} /> Formas de Pagamento
@@ -51,6 +89,19 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </div>
                 </div>
             </div>
+
+            {/* Informações técnicas abaixo */}
+            <div className="col-md-10 mt-4">
+                <div className="card">
+                    <div className="card-body text-black">
+                        <h5>Informações Técnicas:</h5>
+                        <p className="text-black">
+                            {formatDescription(product.description)}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {showModal &&
                 <div className="modal" tabIndex={-1} role="dialog" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                     <div className="modal-dialog" role="document">

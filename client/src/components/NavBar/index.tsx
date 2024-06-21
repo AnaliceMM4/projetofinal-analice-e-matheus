@@ -16,7 +16,9 @@ export function NavBar() {
   return (
     <div className="shadow-sm nav">
       <nav className="navbar navbar-white navbar-expand " style={{ height: '100px' }}>
-        <ul className="navbar-nav me-auto mb-2 mb-md-0 ">
+      <ul className="navbar-nav ">
+
+        {/* <ul className="navbar-nav me-auto mb-2 mb-md-0 "> */}
             <li className="nav-item">
                 <SidebarComponent />
             </li>
@@ -29,7 +31,7 @@ export function NavBar() {
               <button type="button" className="btn btn-danger" ><FaSearch /></button>
             </div>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               to="/products"
               className={(navData) =>
@@ -38,9 +40,9 @@ export function NavBar() {
             >
               Produtos
             </NavLink>
-          </li>
+          </li> */}
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               to="/products-v2"
               className={(navData) =>
@@ -49,7 +51,7 @@ export function NavBar() {
             >
               Produtos V2
             </NavLink>
-          </li>
+          </li> */}
           <li className="nav-item text-white">
             <NavLink
               to="/login"

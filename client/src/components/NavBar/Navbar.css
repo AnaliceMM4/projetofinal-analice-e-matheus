@@ -1,6 +1,6 @@
 div .nav {
   background-color: rgb(54, 51, 52);
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   box-shadow: 0 4px 2px -2px gray;
 }
 
@@ -22,6 +22,8 @@ div .nav {
 }
 
 .nav-item {
+  color: white;
+
   padding: 0.5rem;
 }
 
@@ -61,8 +63,8 @@ div .nav {
 
 
 .logo {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
 }
 .nav-link {
   color: white;

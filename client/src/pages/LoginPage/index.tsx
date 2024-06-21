@@ -1,7 +1,21 @@
 import { IUserLogin } from "@/commons/interfaces";
 import AuthService from "@/service/AuthService";
 import { ChangeEvent, useState } from "react";
+import logo from '@/images/logo.png'; // Caminho para o logo na pasta images
 import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import {
+  MDBContainer,
+  MDBCol,
+  MDBRow,
+  MDBBtn,
+  MDBIcon,
+  MDBInput,
+  MDBCheckbox
+}
+  from 'mdb-react-ui-kit';
+import { RiLockPasswordFill } from "react-icons/ri";
+import { FaUser } from "react-icons/fa";
 
 export function LoginPage() {
   const [form, setForm] = useState({
@@ -44,57 +58,78 @@ export function LoginPage() {
 
   return (
     <>
-      <div className="container">
-        <h1 className="text-center">Login</h1>
-        <div className="col-12 mb-3">
-          <label htmlFor="username">Informe seu usuário:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={form.username}
-            placeholder="Informe seu usuário"
-            className="form-control"
-            onChange={onChange}
-          />
-        </div>
-        <div className="col-12 mb-3">
-          <label htmlFor="password">Informe sua senha:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={form.password}
-            placeholder="******"
-            className="form-control"
-            onChange={onChange}
-          />
-        </div>
-        {apiError && (
-          <div className="alert alert-danger text-center">{apiError}</div>
-        )}
-        {apiSuccess && (
-          <div className="alert alert-success text-center">{apiSuccess}</div>
-        )}
-        <div className="text-center">
-          <button
-            disabled={pendingApiCall}
-            className="btn btn-primary"
-            onClick={onClickLogin}
-          >
-            {pendingApiCall && (
-              <div
-                className="spinner-border spinner-border-sm text-light-spinner mr-sm-1"
-                role="status"
-              ></div>
+
+      <div className="container-fluid bg-dark">
+        <div className="row justify-content-center align-items-center" style={{ height: '100vh' }}>
+          <div className="col-12 col-md-4">
+            <Link to="/" className="navbar-brand text-center">
+              <img src={logo} className="logo" alt="Overclock" style={{ width: '15rem', height: '15rem'}} />
+            </Link>
+            <h1 className="text-center text-white">Login</h1>
+
+            <div className="mb-3 text-white">
+              <label htmlFor="username">Informe seu usuário:</label>
+              <div className="input-group">
+                <span className="input-group-text"><FaUser /></span>
+
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={form.username}
+                  placeholder="Usuário"
+                  className="form-control"
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+
+            <div className="mb-3 text-white">
+              <label htmlFor="password">Informe sua senha:</label>
+              <div className="input-group">
+                <span className="input-group-text"><RiLockPasswordFill /></span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={form.password}
+                  placeholder="******"
+                  className="form-control"
+                  onChange={onChange}
+                />
+              </div>
+
+            </div>
+
+            {apiError && (
+              <div className="alert alert-danger text-center">{apiError}</div>
             )}
-            Cadastrar
-          </button>
-        </div>
-        <div className="text-center">
-          <Link to="/signup">Cadastre-se</Link>
+            {apiSuccess && (
+              <div className="alert alert-success text-center">{apiSuccess}</div>
+            )}
+            <div className="text-center">
+              <button
+                disabled={pendingApiCall}
+                className="btn btn-danger col-md-12"
+                onClick={onClickLogin}
+              >
+                {pendingApiCall && (
+                  <div
+                    className="spinner-border spinner-border-sm text-light-spinner"
+                    role="status"
+                  ></div>
+                )}
+                Entrar
+              </button>
+            </div>
+            <div className="text-center text-white">
+              <span>Não tem conta? </span>
+              <Link to="/signup" className="text-danger">Cadastre-se</Link>
+            </div>
+          </div>
         </div>
       </div>
     </>
+
   );
 }

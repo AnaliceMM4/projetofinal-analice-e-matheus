@@ -4,6 +4,7 @@ import ProductService from "@/service/ProductService";
 import { IProduct } from "@/commons/interfaces";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
+import { MdLocalShipping } from "react-icons/md";
 
 export function Product() {
 
@@ -27,6 +28,13 @@ export function Product() {
         }
     };
 
+    const calcularParcela = (price: number) => {
+        const valorParcela = price / 10;
+        const formattedParcela = valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
+        return formattedParcela;
+    };
+    
+
     return (
 
         <div className="d-flex flex-wrap justify-content-center align-items-center p-4" >
@@ -34,7 +42,7 @@ export function Product() {
 
                 //index: number) => (
                 <div className="" key={product.id} style={{ marginBottom: '3rem', padding: '.7rem' }} >
-                    <div className="card" style={{ width: '15rem', height: '28rem' }}>
+                    <div className="card" style={{ width: '15rem', height: '30rem' }}>
                         <div className="d-flex justify-content-center align-items-center" style={{ padding: '1rem', margin: '1.4rem', height: '8rem' }}>
                             <Link to={`/products/${product.id}`} >
                                 <img src={product.urlImage} className="card-img-top" alt={product.name} />
@@ -51,6 +59,10 @@ export function Product() {
                                 <p className="card-title font-secondary d-flex align-items-center " style={{ fontSize: '1.4rem' }}>
                                     <GiMoneyStack style={{ marginRight: '10px' }} /> {/* Ícone com margem à direita */}
                                     R$ {product.price}
+                                </p>
+                                <p className="text-muted" style={{ fontSize: '1rem', color: 'black' }}>em até 10x de {calcularParcela(product.price)}</p>
+                                <p className="text-success d-flex align-items-center justify-content-center fs-6">
+                                    <MdLocalShipping style={{ marginRight: '10px' }} /> Frete Grátis!
                                 </p>
                             </div>
 

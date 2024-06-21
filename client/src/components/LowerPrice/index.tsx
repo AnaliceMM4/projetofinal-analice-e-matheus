@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 import ProductService from "@/service/ProductService";
 import { IProduct } from "@/commons/interfaces";
+import { MdLocalShipping } from "react-icons/md";
 
 export function LowerPrice() {
     const [data, setData] = useState<IProduct[]>([]);
@@ -22,6 +23,13 @@ export function LowerPrice() {
             setApiError("Falha ao carregar a lista de produtos");
         }
     };
+    
+    const calcularParcela = (price: number) => {
+        const valorParcela = price / 10;
+        const formattedParcela = valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
+        return formattedParcela;
+    };
+    
 
     // Filtra os produtos que valem menos que 1000 reais
     const filteredProducts = data.filter((product) => product.price < 1000);
@@ -41,7 +49,7 @@ export function LowerPrice() {
                 {filteredProducts.length === 0 && <p>Nenhum produto encontrado com preço menor de 1000 reais.</p>}
                 {filteredProducts.map((product: IProduct) => (
                     <div className="card m-2" style={{
-                        width: '15rem', height: '28rem',
+                        width: '15rem', height: '33rem',
                     }} key={product.id}>
 
                         <div className="card-body">
@@ -60,6 +68,10 @@ export function LowerPrice() {
                                 <p className="card-title font-secondary d-flex align-items-center " style={{ fontSize: '1.4rem' }}>
                                     <GiMoneyStack style={{ marginRight: '10px' }} /> {/* Ícone com margem à direita */}
                                     R$ {product.price}
+                                </p>
+                                <p className="text-muted" style={{ fontSize: '1rem', color: 'black' }}>em até 10x de {calcularParcela(product.price)}</p>
+                                <p className="text-success d-flex align-items-center justify-content-center fs-6">
+                                    <MdLocalShipping style={{ marginRight: '10px' }} /> Frete Grátis!
                                 </p>
                             </div>
                             <div className="d-grid">

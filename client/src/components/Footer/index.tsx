@@ -14,7 +14,7 @@ import './Footer.css';
 export function Footer() {
     return (
         <>
-            <div className="row bg-dark c-red box-s1 pt-2 ml-0 ">
+            <div className="row bg-dark c-red box-s1 pt-2 ml-0 footer">
 
                 <div className="col ms-3 mt-4">
                     <h5>INSTITUCIONAL</h5>

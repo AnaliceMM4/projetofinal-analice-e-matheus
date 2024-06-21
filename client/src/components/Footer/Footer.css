@@ -6,6 +6,11 @@
     --redLight: rgb(216, 59, 76);
 }
 
+.footer{
+    width: 100%;
+
+}
+
 p{
     color: white;
     font-size: .9rem;
@@ -40,7 +45,8 @@ h5{
 }
 
 .cartoes{
-   max-width: 15%;
+    width: 3rem;
+   /* max-width: 15%; */
    margin-bottom: 0.2rem;
    margin-right: 0.2rem;
 }

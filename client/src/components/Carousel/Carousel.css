@@ -1,0 +1,10 @@
+.carousel-item img {
+    width:10rem;
+    margin: auto; /* Centraliza horizontalmente as imagens */
+}
+
+/* Estilo para ajustar a largura do carousel */
+.carousel {
+    width: 20rem; /* Define a largura do carousel */
+    margin: auto; /* Centraliza o carousel na página */
+}
