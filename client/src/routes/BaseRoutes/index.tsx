@@ -34,7 +34,7 @@ export function BaseRoutes() {
           <Route path="/products" element={<ProductListPage />} />
           < Route path="/products-v2" element={<ProductListPageV2 />} />
           {/* < Route path="/requestItens/:id" element={<ProductsCartPage />} /> */}
-          < Route path="/orderItens/:id" element={<ProductsCartPage />} />
+          < Route path="/carrinhoDetailsPage" element={<ProductsCartPage />} />
 
           {/* <Route path="/products-v2/new" element={<ProductFormPageV2 />} /> */}
           {/* <Route path="/products-v2/:id" element={<ProductFormPageV2 />} /> */}

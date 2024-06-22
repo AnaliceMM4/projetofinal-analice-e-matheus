@@ -36,7 +36,7 @@ export function ProductsCartPage() {
             <main>
                 <div>
                     {apiError && <p className="text-danger">{apiError}</p>}
-                    ADd
+                    
                     {data ? <AddCart/> : <p>Carregando...</p>}
                 </div>
             </main>

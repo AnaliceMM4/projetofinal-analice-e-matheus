@@ -31,6 +31,35 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         return formattedParcela;
     };
 
+    const addItemToLocalStorage = (key: string, item: IProduct) => {
+        try {
+          const existingItems: IProduct[] = JSON.parse(localStorage.getItem(key) || '[]');
+          const quantities = JSON.parse(localStorage.getItem('quantities') || '{}');
+      
+          const itemIndex = existingItems.findIndex(existingItem => existingItem.id === item.id);
+      
+          if (itemIndex > -1) {
+            // Produto já existe, incrementar a quantidade
+            const itemId = item.id!;
+            quantities[itemId] = (quantities[itemId] || 1) + 1;
+          } else {
+            // Novo produto, adicionar ao array
+            existingItems.push(item);
+            quantities[item.id!] = 1;
+          }
+      
+          localStorage.setItem(key, JSON.stringify(existingItems));
+          localStorage.setItem('quantities', JSON.stringify(quantities));
+        } catch (error) {
+          console.error('Erro ao adicionar item ao LocalStorage:', error);
+        }
+      };
+    const handleAddToCart = () => {
+        addItemToLocalStorage('cart', product);
+        // Redirecionar para a página de orderItens (opcional)
+        // window.location.href = `/orderItens/${product.id}`;
+    };
+
 
     // // Função para formatar o texto de descrição
     const formatDescription = (description: string) => {
@@ -82,9 +111,12 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </button>
 
                     <div>
-                        <Link to={`/orderItens/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
+                    <button onClick={handleAddToCart} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
-                        </Link>
+                        </button>
+                        {/*<Link to={`/orderItens/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
+                            <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
+                        </Link>*/}
                         {/* <a href="#" className="btn w-100"> <i className="bi bi-cart-check-fill pe-2"></i>Comprar</a> */}
                     </div>
                 </div>
