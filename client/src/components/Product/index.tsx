@@ -4,7 +4,7 @@ import { IProduct } from "@/commons/interfaces";
 import { FaBarcode, FaCreditCard, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdLocalShipping, MdOutlinePayments, MdOutlinePix } from "react-icons/md";
-import { AddCart } from "../AddCart";
+import { AddCart } from "../CarrinhoDetailsPage";
 import { CiCreditCard2 } from "react-icons/ci";
 import { right } from "@popperjs/core";
 
