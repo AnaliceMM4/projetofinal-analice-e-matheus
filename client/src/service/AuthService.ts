@@ -43,11 +43,23 @@ const logout = (): void => {
   api.defaults.headers.common["Authorization"] = "";
 };
 
+
+const getCurrentUser = (): string | null => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decodifica o payload do token JWT
+    return decodedToken.username; // Altere conforme a estrutura do seu token
+  }
+  return null;
+};
+
 const AuthService = {
   signup,
   login,
   isAuthenticated,
   logout,
+  getCurrentUser,
+
 };
 
 export default AuthService;

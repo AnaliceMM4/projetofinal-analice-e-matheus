@@ -1,10 +1,9 @@
 // ProductDetails.tsx
 import React, { useState } from "react";
 import { IProduct } from "@/commons/interfaces";
-import { FaBarcode, FaCreditCard, FaShoppingCart } from "react-icons/fa";
+import { FaBarcode, FaChevronRight, FaCreditCard, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdLocalShipping, MdOutlinePayments, MdOutlinePix } from "react-icons/md";
-import { AddCart } from "../CarrinhoDetailsPage";
 import { CiCreditCard2 } from "react-icons/ci";
 import { right } from "@popperjs/core";
 
@@ -33,27 +32,28 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
 
     const addItemToLocalStorage = (key: string, item: IProduct) => {
         try {
-          const existingItems: IProduct[] = JSON.parse(localStorage.getItem(key) || '[]');
-          const quantities = JSON.parse(localStorage.getItem('quantities') || '{}');
-      
-          const itemIndex = existingItems.findIndex(existingItem => existingItem.id === item.id);
-      
-          if (itemIndex > -1) {
-            // Produto já existe, incrementar a quantidade
-            const itemId = item.id!;
-            quantities[itemId] = (quantities[itemId] || 1) + 1;
-          } else {
-            // Novo produto, adicionar ao array
-            existingItems.push(item);
-            quantities[item.id!] = 1;
-          }
-      
-          localStorage.setItem(key, JSON.stringify(existingItems));
-          localStorage.setItem('quantities', JSON.stringify(quantities));
+            const existingItems: IProduct[] = JSON.parse(localStorage.getItem(key) || '[]');
+            const quantities = JSON.parse(localStorage.getItem('quantities') || '{}');
+
+            const itemIndex = existingItems.findIndex(existingItem => existingItem.id === item.id);
+
+            if (itemIndex > -1) {
+                // Produto já existe, incrementar a quantidade
+                const itemId = item.id!;
+                quantities[itemId] = (quantities[itemId] || 1) + 1;
+            } else {
+                // Novo produto, adicionar ao array
+                existingItems.push(item);
+                quantities[item.id!] = 1;
+            }
+
+            localStorage.setItem(key, JSON.stringify(existingItems));
+            localStorage.setItem('quantities', JSON.stringify(quantities));
+            alert(`Produto "${item.name}" adicionado ao carrinho!`);
         } catch (error) {
-          console.error('Erro ao adicionar item ao LocalStorage:', error);
+            console.error('Erro ao adicionar item ao LocalStorage:', error);
         }
-      };
+    };
     const handleAddToCart = () => {
         addItemToLocalStorage('cart', product);
         // Redirecionar para a página de orderItens (opcional)
@@ -74,26 +74,26 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     };
 
     return (
-        <div className="row my-4 justify-content-center">
-
-            <div className="d-flex align-items-center" style={{ paddingLeft: '8rem', marginLeft: '7rem' }}>
-           
-            <Link to={`/categories/${product.category.id}`} >
-                <h5 className="text-start">{product.category.name} - 
-                    <span className="text-danger small"> Código: {product.id}</span>
-                </h5>
-                </Link>
-            </div>
+        <div className="row my-4 justify-content-center" style={{ width: '100%' }}>
 
             <div className="col-md-6 d-flex justify-content-center">
 
-                <div className="card border border-danger">
-                    <img src={product.urlImage} className="card-img-top img-fluid" alt={product.description} style={{ maxWidth: '100%', height: '35rem', objectFit: 'contain' }} />
+                {/* card border border-danger */}
+                <div className="">
+                    <div className="d-flex align-items-center">
+                        <Link to={`/categories/${product.category.id}`} className="text-decoration-none">
+                            <h5 className="text-start mb-0 me-2 ms-1">{product.category.name} </h5>
+                        </Link>
+                        <FaChevronRight className="mb-0 me-1" style={{ fontSize: "0.8rem"}} />
+                        <p className="text-danger mb-0 ms-2">Código: {product.id}</p>
+                    </div>
+                    <img src={product.urlImage} className="card-img-top img-fluid" alt={product.description}
+                        style={{ width: '100%', height: '35rem', objectFit: 'contain' }} />
                 </div>
 
             </div>
 
-            <div className="col-md-4 ">
+            <div className="col-md-4">
                 <div className="card">
                     <div className="card-body">
                         <h4>{product.name}</h4>
@@ -111,7 +111,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </button>
 
                     <div>
-                    <button onClick={handleAddToCart} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
+                        <button onClick={handleAddToCart} className="btn btn-danger w-100 d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
                         </button>
                         {/*<Link to={`/orderItens/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">

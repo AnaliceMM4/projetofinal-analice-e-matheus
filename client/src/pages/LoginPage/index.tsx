@@ -62,16 +62,16 @@ export function LoginPage() {
       <div className="container-fluid bg-dark">
         <div className="row justify-content-center align-items-center" style={{ height: '100vh' }}>
           <div className="col-12 col-md-4">
-            <Link to="/" className="navbar-brand text-center">
-              <img src={logo} className="logo" alt="Overclock" style={{ width: '15rem', height: '15rem'}} />
-            </Link>
-            <h1 className="text-center text-white">Login</h1>
+              <Link to="/" className="">
+                <img src={logo} className="logo" alt="Overclock" style={{ width: '10rem', height: '10rem' }} />
+              </Link>
+            
+            <h1 className="text-center text-white">Login </h1>
 
             <div className="mb-3 text-white">
               <label htmlFor="username">Informe seu usuário:</label>
               <div className="input-group">
                 <span className="input-group-text"><FaUser /></span>
-
                 <input
                   type="text"
                   id="username"
@@ -98,7 +98,6 @@ export function LoginPage() {
                   onChange={onChange}
                 />
               </div>
-
             </div>
 
             {apiError && (

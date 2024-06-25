@@ -23,29 +23,30 @@ export function LowerPrice() {
             setApiError("Falha ao carregar a lista de produtos");
         }
     };
-    
+
     const calcularParcela = (price: number) => {
         const valorParcela = price / 10;
         const formattedParcela = valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
         return formattedParcela;
     };
-    
+
 
     // Filtra os produtos que valem menos que 1000 reais
     const filteredProducts = data.filter((product) => product.price < 1000);
     //     const filteredProducts = data.filter((product) => product.category === "processador");
     const imageFundo = 'https://tm.ibxk.com.br/2014/07/04/04112337289322.jpg?ims=1280x480';
     return (
-        <div className="bg-dark w-auto" style={{
+        <div className="bg-dark w-100 min-vh-100 d-flex flex-column justify-content-center align-items-center" style={{
             backgroundImage: `url(${imageFundo})`,
-            backgroundSize: 'cover', backgroundPosition: 'center'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         }}>
-            <div className="App" style={{ backgroundColor: 'rgb(216, 59, 76)', padding: '.5rem' }}>
-            <h2 className="mt-2" style={{ color: 'white', fontSize: '', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif', textAlign: 'center', textTransform: 'uppercase' }}>
-            Promoção do Dia
+            <div className="App" style={{ backgroundColor: 'rgb(216, 59, 76)', padding: '.5rem', width: '100%' }}>
+                   <h2 className="mt-2" style={{ color: 'white', fontSize: '', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif', textAlign: 'center', textTransform: 'uppercase' }}>
+                    Promoção do Dia
                 </h2>
             </div>
-            <div className="d-flex flex-wrap justify-content-center align-items-center p-4">
+            <div className="d-flex flex-wrap justify-content-center align-items-center p-4" style={{ width: '100%' }}>
                 {filteredProducts.length === 0 && <p>Nenhum produto encontrado com preço menor de 1000 reais.</p>}
                 {filteredProducts.map((product: IProduct) => (
                     <div className="card m-2" style={{
@@ -59,7 +60,7 @@ export function LowerPrice() {
                                         src={product.urlImage}
                                         className="card-img-top"
                                         alt={product.name}
-                                        style={{ maxWidth: "100%", height: "auto" }}
+                                        style={{ width: "100%", height: "auto" }}
                                     />
                                 </Link>
                             </div>
