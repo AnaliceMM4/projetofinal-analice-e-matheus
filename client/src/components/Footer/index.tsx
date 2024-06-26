@@ -73,7 +73,7 @@ export function Footer() {
                         {/* <p>___</p> */}
                         <p className="text-secondary">Preços e condições de pagamento exclusivos para compras via internet e
                             podem variar nas lojas físicas. Os preços anunciados neste site ou via e-mail promocional podem
-                            ser alterados sem prévio aviso. A NinjaDrive Informática não é responsável por erros
+                            ser alterados sem prévio aviso. A Overclock Informática não é responsável por erros
                             descritivos. As fotos contidas nesta página são meramente ilustrativas do produto e podem variar
                             de acordo com o fornecedor/lote do fabricante. Ofertas válidas até o término de nossos estoques.
                             Vendas sujeitas à análise e confirmação de dados.</p>

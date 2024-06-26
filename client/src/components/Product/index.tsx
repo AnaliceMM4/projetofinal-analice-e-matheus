@@ -56,8 +56,8 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     };
     const handleAddToCart = () => {
         addItemToLocalStorage('cart', product);
-        // Redirecionar para a página de orderItens (opcional)
-        // window.location.href = `/orderItens/${product.id}`;
+        
+         window.location.href = `/home`;
     };
 
 
@@ -111,9 +111,11 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </button>
 
                     <div>
+                        
                         <button onClick={handleAddToCart} className="btn btn-danger w-100 d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
                         </button>
+                       
                         {/*<Link to={`/orderItens/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
                         </Link>*/}
@@ -143,7 +145,6 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                                 <button type="button" className="btn-close" onClick={closeModal}></button>
                             </div>
                             <div className="fs-5">
-                                <p>Aqui você pode listar as formas de pagamento disponíveis:</p>
                                 <ul>
                                     <li className="d-flex align-items-center"><FaCreditCard style={{ marginRight: '5px' }} /> Cartão de Crédito</li>
 
