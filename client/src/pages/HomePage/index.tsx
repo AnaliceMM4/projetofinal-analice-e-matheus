@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { IProduct } from "@/commons/interfaces";
 import ProductService from "@/service/ProductService";
-import { FaShoppingCart } from "react-icons/fa";
 import { Product } from "@/components/ListProduct";
 import { LowerPrice } from "@/components/LowerPrice";
 
@@ -28,7 +26,7 @@ export function HomePage() {
 
   return (
     <>
-      <main className="">
+      <main className="" >
         {/* container */}
         <div className="text-center">
             {/* OBS: CARROSEL COM IMAGENS DE PRODUTOS QUALQUER - SÓ PARA TER UM DESTAQUE AQUI */}
@@ -43,6 +41,8 @@ export function HomePage() {
             <Product />
             {/* <AddCart/> */}
           </div>
+          {/* <Destaques /> */}
+
         </div>
       </main>
     </>

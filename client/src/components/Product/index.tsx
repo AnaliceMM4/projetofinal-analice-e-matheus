@@ -110,12 +110,10 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                         <MdOutlinePayments style={{ marginRight: '5px' }} /> Formas de Pagamento
                     </button>
 
-                    <div>
-                        
+                    <div>  
                         <button onClick={handleAddToCart} className="btn btn-danger w-100 d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
                         </button>
-                       
                         {/*<Link to={`/orderItens/${product.id}`} className="btn btn-danger d-flex align-items-center justify-content-center mt-4">
                             <FaShoppingCart style={{ marginRight: '5px' }} /> COMPRAR
                         </Link>*/}

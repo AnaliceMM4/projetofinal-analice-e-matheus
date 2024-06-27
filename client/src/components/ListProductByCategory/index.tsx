@@ -7,7 +7,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 import { MdLocalShipping } from "react-icons/md";
 
+interface Props {
+  categoryId: number;
+}
+
 export function ProductByCategory() {
+  // const ProductByCategory: React.FC<Props> = ({ categoryId }) => {
+
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<IProduct[]>([]);
   const [apiError, setApiError] = useState("");
@@ -79,4 +85,7 @@ export function ProductByCategory() {
       )}
     </div>
   );
-}
+};
+
+export default ProductByCategory;
+

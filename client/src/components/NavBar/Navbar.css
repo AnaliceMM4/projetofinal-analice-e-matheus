@@ -1,7 +1,17 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
 nav{
   background-color: rgb(54, 51, 52);
   width: 100%;
   /* padding: 2rem; */
+}
+
+.logo{
+  width: 15rem;
+  height: 8rem;
 }
 
 

@@ -29,7 +29,7 @@ export function NavBar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar w-auto">
       <div className="container-fluid justify-content-between">
         {/* Left */}
         <div className="d-flex align-items-center">
@@ -86,7 +86,9 @@ export function NavBar() {
             </NavLink>
           </li> */}
           <li className="nav-item">
-            <CarrinhoNavBarComponent />
+            <CarrinhoNavBarComponent updateCartItemsCount={function (count: number): void {
+              throw new Error("Function not implemented.");
+            } } />
           </li>
         </ul>
       </div>

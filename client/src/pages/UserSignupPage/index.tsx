@@ -122,7 +122,7 @@ export function UserSignupPage() {
                   id="password"
                   name="password"
                   label=""
-                  type="text"
+                  type="password"
                   value={form.password}
                   placeholder="Senha"
                   hasError={errors.password ? true : false}

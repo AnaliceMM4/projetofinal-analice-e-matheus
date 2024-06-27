@@ -13,8 +13,9 @@ import './Footer.css';
 
 export function Footer() {
     return (
-        <>
-            <div className="row bg-dark c-red box-s1 pt-2 ml-0 footer">
+
+        <footer>
+            <div className="row bg-dark container-fluid justify-content-between  footer">
 
                 <div className="col ms-3 mt-4">
                     <h5>INSTITUCIONAL</h5>
@@ -60,8 +61,6 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="bgcb d-flex pt-2 c-red p-4">
-                    {/* <div className="p-4"> */}
-
                     <div>
                         <img src={logo2} className="logo2" alt="Overclock2" />
                     </div>
@@ -70,7 +69,6 @@ export function Footer() {
                         <h6>OVERCLOCK INFORMÁTICA® É UMA MARCA REGISTRADA DE UTF & LAEC INFORMATICA LTDA | CNPJ:
                             23.276.795/0001-13 | IE: 434.013.410.110</h6>
                         <p>Avenida Santos Dumont, 8799 - Aventureiro, Joinville - SC - 89436-435</p>
-                        {/* <p>___</p> */}
                         <p className="text-secondary">Preços e condições de pagamento exclusivos para compras via internet e
                             podem variar nas lojas físicas. Os preços anunciados neste site ou via e-mail promocional podem
                             ser alterados sem prévio aviso. A Overclock Informática não é responsável por erros
@@ -80,7 +78,6 @@ export function Footer() {
                     </div>
                     <div className='col-md-4 mt-4 text-center'>
                         <h6>CERTIFICADOS DE SEGURANÇA</h6>
-                        {/* <p>___</p> */}
                         <div className="bgcw box-s1">
                             <div className="d-flex justify-content-center align-items-center">
                                 <img src={logo} className="logo me-3" alt="Overclock" />
@@ -91,8 +88,7 @@ export function Footer() {
                     </div>
                 </div>
             </div>
-            {/* </div> */}
+        </footer>
 
-        </>
     );
 }

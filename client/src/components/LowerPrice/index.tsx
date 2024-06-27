@@ -41,6 +41,7 @@ export function LowerPrice() {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
+            
             <div className="App" style={{ backgroundColor: 'rgb(216, 59, 76)', padding: '.5rem', width: '100%' }}>
                    <h2 className="mt-2" style={{ color: 'white', fontSize: '', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif', textAlign: 'center', textTransform: 'uppercase' }}>
                     Promoção do Dia

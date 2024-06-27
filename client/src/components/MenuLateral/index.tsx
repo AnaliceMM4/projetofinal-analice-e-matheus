@@ -18,7 +18,7 @@ import { BsCpuFill, BsMotherboardFill } from "react-icons/bs";
 import { SiPcgamingwiki } from "react-icons/si";
 import { PiGameControllerFill, PiGraphicsCardFill } from "react-icons/pi";
 import { RiMenu2Line } from "react-icons/ri";
-
+import CategoryIcon from '../CategoryIcon';
 
 const SidebarComponent: React.FC = () => {
   const [data, setData] = useState<ICategory[]>([]);
@@ -43,24 +43,6 @@ const SidebarComponent: React.FC = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
-  const getCategoryIcon = (categoryId: number): JSX.Element => {
-    switch (categoryId) {
-      case 1:
-        return <SiPcgamingwiki style={{ marginRight: '5px' }} />
-
-      case 2:
-        return <BsCpuFill style={{ marginRight: '5px' }} />;
-      case 3:
-        return <PiGameControllerFill style={{ marginRight: '5px' }} />;
-      case 4:
-        return <PiGraphicsCardFill  style={{ marginRight: '5px' }} />;
-      case 5:
-        return <BsMotherboardFill  style={{ marginRight: '5px' }} />;
-      default:
-        return <FaList style={{ marginRight: '5px' }} />; // Ícone padrão, se nenhum ID corresponder
-    }
-  };
 
 
   return (
@@ -94,7 +76,9 @@ const SidebarComponent: React.FC = () => {
         ) : (
           data.map(category => (
             <div key={category.id} className="sidebar-item d-flex align-items-center mt-4" style={{ fontSize: '1.3rem' }}>
-              {category.id !== undefined && getCategoryIcon(category.id)} {/* Renderiza o ícone se categoryId não for undefined */}
+              {category.id !== undefined && <CategoryIcon categoryId={category.id} />} {/* Renderiza o ícone usando o componente CategoryIcon */}
+
+              {/* CategoryIcon(category.id)} Renderiza o ícone se categoryId não for undefined */}
 
               <Link to={`/categories/${category.id}`} onClick={toggleSidebar}>{category.name}</Link>
               {/* {category.name} */}
@@ -108,3 +92,5 @@ const SidebarComponent: React.FC = () => {
 };
 
 export default SidebarComponent;
+
+

@@ -1,3 +1,7 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 :root {
     --red: rgb(215, 15, 26);
     --gray: rgb(54, 51, 52);
@@ -7,8 +11,7 @@
 }
 
 .footer{
-    width: 100%;
-
+    max-width:100%;
 }
 
 p{
@@ -25,12 +28,12 @@ h5{
     background-color: black;
 }
 
-/* .bgcw{
+.bgcw{
     background-color: white;
-} */
+}
 
 
-.logo{
+ .logo{
     width: 8rem;
     height: 8rem;
 }
@@ -42,13 +45,13 @@ h5{
 .logo2{
     width: auto;
     height: 15rem;
-}
+} 
 
 .cartoes{
     width: 3rem;
    /* max-width: 15%; */
-   margin-bottom: 0.2rem;
-   margin-right: 0.2rem;
+   /* margin-bottom: 0.2rem;
+   margin-right: 0.2rem; */
 }
 
 .c-red{
