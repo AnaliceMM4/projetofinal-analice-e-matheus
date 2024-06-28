@@ -2,10 +2,15 @@ import { IProduct } from '@/commons/interfaces';
 import React, { useState, useEffect } from 'react';
 import { FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
+import AuthService from '@/service/AuthService';
+
 
 const CarrinhoDetailsPage: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+  const navigate = useNavigate(); // Hook useNavigate para navegação programática
+ 
 
   useEffect(() => {
     loadData();
@@ -25,12 +30,11 @@ const CarrinhoDetailsPage: React.FC = () => {
   const handleQuantityChange = (id: number, quantity: number) => {
     if (quantity < 1){
       handleRemove(id);
-    }else{
+    } else {
       const updatedQuantities = { ...quantities, [id]: quantity };
       setQuantities(updatedQuantities);
       localStorage.setItem('quantities', JSON.stringify(updatedQuantities));
     }
-   
   };
 
   const handleRemove = (id: number) => {
@@ -54,12 +58,20 @@ const CarrinhoDetailsPage: React.FC = () => {
     }
   };
 
-
   const calculateTotalPrice = () => {
     return products.reduce((total, product) => {
       const quantity = quantities[product.id] || 1;
       return total + product.price * quantity;
     }, 0);
+  };
+
+  const handleFinalizarCompra = () => {
+    // Salvar os produtos no localStorage como um item "pedido"
+    const total = calculateTotalPrice();
+    const pedido = { produtos: products, total: total };
+    localStorage.setItem('pedido', JSON.stringify(pedido));
+    // Navegar para a página de resumo ou outra ação
+    navigate('/resumoPage');
   };
 
   return (
@@ -116,7 +128,7 @@ const CarrinhoDetailsPage: React.FC = () => {
             <h4>Resumo do Pedido</h4>
             <p className='text-dark'>Total de itens: {Object.values(quantities).reduce((a, b) => a + b, 0)}</p>
             <p className='text-dark'>Total a pagar: R$ {calculateTotalPrice().toFixed(2)}</p>
-            <a href="#" className="btn btn-primary w-100">Finalizar Compra</a>
+            <button onClick={handleFinalizarCompra} className="btn btn-primary w-100">Finalizar Compra</button>
           </div>
         </div>
       </div>

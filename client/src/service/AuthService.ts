@@ -53,6 +53,8 @@ const getCurrentUser = (): string | null => {
   return null;
 };
 
+
+
 const AuthService = {
   signup,
   login,
