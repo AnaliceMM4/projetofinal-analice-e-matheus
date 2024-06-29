@@ -13,6 +13,7 @@ import { ProductByCategoryPage } from "@/pages/ProductByCategoryPage";
 import CarrinhoDetailsPage from "@/components/CarrinhoDetailsPage";
 import { PrivateRoutes } from "../PrivateRoutes";
 import { ResumoPage } from "@/pages/ResumoPage";
+import OrdersPage from "@/pages/OrdersPage";
 
 //import { ProductFormPageV2 } from "@/pages/ProductFormPageV2";
 
@@ -42,6 +43,7 @@ export function BaseRoutes() {
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path="/resumoPage" element={<ResumoPage />} />
+          <Route path="/OrdersPage" element={<OrdersPage />} />
         </Route>
       </Routes>
     </>

@@ -23,11 +23,11 @@ export interface IProduct {
   category: ICategory;
 }
 
-export interface IOrder{
+export interface IOrder {
+  paymentTypes: string;
   id?: number;
-  data: Date;
+  data: string | Date; // Ajuste para aceitar string ou Date
   user: IUserLogin;
-  //payment;
 }
 
 export interface IOrderItens{

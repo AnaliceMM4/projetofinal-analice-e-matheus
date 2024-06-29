@@ -45,7 +45,7 @@ export function NavBar() {
                 {isAuthenticated ? (
                   <>
                     <MDBDropdownItem>
-                      <NavLink to="/orders" className="nav-link">Listar Pedidos</NavLink>
+                      <NavLink to="/ordersPage" className="nav-link">Listar Pedidos</NavLink>
                     </MDBDropdownItem>
                     <MDBDropdownItem>
                       <NavLink to="/settings" className="nav-link">Configurações</NavLink>

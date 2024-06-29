@@ -27,6 +27,7 @@ const login = async (user: IUserLogin): Promise<any> => {
   return response;
 };
 
+
 const isAuthenticated = (): boolean => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -43,16 +44,14 @@ const logout = (): void => {
   api.defaults.headers.common["Authorization"] = "";
 };
 
-
-const getCurrentUser = (): string | null => {
+const getCurrentUser = (): number | null => {
   const token = localStorage.getItem("token");
   if (token) {
     const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decodifica o payload do token JWT
-    return decodedToken.username; // Altere conforme a estrutura do seu token
+    return decodedToken.id; // Assume-se que o token contém o ID do usuário
   }
   return null;
 };
-
 
 
 const AuthService = {
@@ -61,7 +60,6 @@ const AuthService = {
   isAuthenticated,
   logout,
   getCurrentUser,
-
 };
 
 export default AuthService;

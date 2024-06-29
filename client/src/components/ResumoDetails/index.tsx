@@ -1,12 +1,13 @@
-import { IProduct } from '@/commons/interfaces';
+import { IOrder, IProduct } from '@/commons/interfaces';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import OrderService from '@/service/OrderService'; // Importe o seu serviço de pedidos
 
 const ResumoPedidoPage: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-  const [formaPagamento, setFormaPagamento] = useState<string>('PIX');
+  const [formaPagamento, setFormaPagamento] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,11 +30,27 @@ const ResumoPedidoPage: React.FC = () => {
     }, 0);
   };
 
-  const handleFinalizarCompra = () => {
+  const handleFinalizarCompra = async () => {
     const total = calculateTotalPrice();
-    const pedido = { produtos: products, quantidades: quantities, total: total, formaPagamento: formaPagamento };
-    localStorage.setItem('pedido', JSON.stringify(pedido));
-    navigate('/resumoPage');
+
+    // Construção do objeto pedido no formato esperado
+    const pedido = {
+      paymentTypes: formaPagamento,
+      requestItens: products.map(product => ({
+        product: { id: product.id },
+        quantidade: quantities[product.id] || 1
+      }))
+    };
+
+    try {
+      const response = await OrderService.saveOrder(pedido as IOrder); // Chama o método saveOrder do OrderService
+      console.log('Pedido salvo com sucesso:', response.data); // Exemplo de tratamento de sucesso
+      localStorage.removeItem('pedido'); // Remove o pedido do localStorage após salvar
+      navigate('/pedido/confirmacao'); // Navega para a página de confirmação do pedido
+    } catch (error) {
+      console.error('Erro ao salvar o pedido:', error); // Tratamento de erro
+      // Aqui você pode adicionar lógica para lidar com erros, como exibir uma mensagem para o usuário
+    }
   };
 
   return (
@@ -78,13 +95,15 @@ const ResumoPedidoPage: React.FC = () => {
               <select
                 id="formaPagamento"
                 className="form-control"
-                value={formaPagamento}
+                value={formaPagamento || ''}
                 onChange={(e) => setFormaPagamento(e.target.value)}
               >
+                <option value="">Selecione a Forma de Pagamento</option>
                 <option value="PIX">PIX</option>
-                <option value="Débito">Cartão de Débito</option>
-                <option value="Crédito">Cartão de Crédito</option>
+                <option value="CARTAODEBITO">Cartão de Débito</option>
+                <option value="CARTAOCREDITO">Cartão de Crédito</option>
               </select>
+
             </div>
             <button onClick={handleFinalizarCompra} className="btn btn-primary w-100 mt-3">Finalizar Pedido</button>
           </div>
