@@ -65,10 +65,10 @@ const CarrinhoDetailsPage: React.FC = () => {
     }, 0);
   };
 
-  const handleFinalizarCompra = () => {
+   const handleFinalizarCompra = () => {
     // Salvar os produtos no localStorage como um item "pedido"
     const total = calculateTotalPrice();
-    const pedido = { produtos: products, total: total };
+    const pedido = { produtos: products, quantidades: quantities, total: total };
     localStorage.setItem('pedido', JSON.stringify(pedido));
     // Navegar para a página de resumo ou outra ação
     navigate('/resumoPage');
@@ -128,7 +128,7 @@ const CarrinhoDetailsPage: React.FC = () => {
             <h4>Resumo do Pedido</h4>
             <p className='text-dark'>Total de itens: {Object.values(quantities).reduce((a, b) => a + b, 0)}</p>
             <p className='text-dark'>Total a pagar: R$ {calculateTotalPrice().toFixed(2)}</p>
-            <button onClick={handleFinalizarCompra} className="btn btn-primary w-100">Finalizar Compra</button>
+            <button onClick={handleFinalizarCompra} className="btn btn-primary w-100">Finalizar Pedido</button>
           </div>
         </div>
       </div>

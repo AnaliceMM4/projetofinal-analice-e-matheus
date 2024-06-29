@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IProduct } from "@/commons/interfaces";
 import ProductService from "@/service/ProductService";
-import { ProductDetails } from "@/components/Product";
-import CarrinhoDetailsPage from "@/components/CarrinhoDetailsPage";
+
 import ResumoDetails from "@/components/ResumoDetails";
 
 export function ResumoPage() {
@@ -30,7 +29,7 @@ export function ResumoPage() {
                   {/*div do usuario*/}
                 </div>
                 <div>{/*div do forma de produtos*/}
-                  
+                  <ResumoDetails/>
                 </div>
                 <div> {/*div do forma de pagamento*/}</div>
                 
