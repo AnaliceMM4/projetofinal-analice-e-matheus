@@ -50,6 +50,9 @@ const ResumoPedidoPage: React.FC = () => {
       localStorage.removeItem('quantities');
       navigate('/home');
     
+      alert('Sua compra foi realizada com sucesso!');
+
+
     } catch (error) {
       console.error('Erro ao salvar o pedido:', error);
     }
@@ -100,14 +103,14 @@ const ResumoPedidoPage: React.FC = () => {
                 value={formaPagamento || ''}
                 onChange={(e) => setFormaPagamento(e.target.value)}
               >
-                <option value="">Selecione a Forma de Pagamento</option>
+                {/* <option value="">Selecione a Forma de Pagamento</option> */}
                 <option value="PIX">PIX</option>
                 <option value="CARTAODEBITO">Cartão de Débito</option>
                 <option value="CARTAOCREDITO">Cartão de Crédito</option>
               </select>
 
             </div>
-            <button onClick={handleFinalizarCompra} className="btn btn-primary w-100 mt-3">Finalizar Pedido</button>
+            <button onClick={handleFinalizarCompra} className="btn btn-danger w-100 mt-3">Finalizar Compra</button>
           </div>
         </div>
       </div>

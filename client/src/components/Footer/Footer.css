@@ -12,24 +12,17 @@
 
 .footer{
     max-width:100%;
+    background-color: rgb(54, 51, 52);
 }
+.text-red {
+    color:  rgb(215, 15, 26);
+
+
+  }
 
 p{
     color: white;
-    font-size: .9rem;
-}
-
-h5{
-    color: var(--red);
-    
-}
-
-.bgcb{
-    background-color: black;
-}
-
-.bgcw{
-    background-color: white;
+    /* font-size: .9rem; */
 }
 
 
@@ -44,7 +37,7 @@ h5{
 }
 .logo2{
     width: auto;
-    height: 15rem;
+    height: 12rem;
 } 
 
 .cartoes{
@@ -54,6 +47,6 @@ h5{
    margin-right: 0.2rem; */
 }
 
-.c-red{
+/* .c-red{
 color: var(--red);
-}
+} */

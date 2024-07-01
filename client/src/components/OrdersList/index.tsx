@@ -32,7 +32,6 @@ const OrdersComponent: React.FC = () => {
 
   return (
     <MDBContainer className="my-5">
-      <h2 className="my-4 text-center">Meus Pedidos</h2>
       {apiError && <div className="alert alert-danger">{apiError}</div>}
       <MDBListGroup>
         {data.map((order: IOrder) => (
