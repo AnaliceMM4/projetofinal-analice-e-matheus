@@ -4,8 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import { PublicRoutes } from "../PublicRoutes";
 import { HomePage } from "@/pages/HomePage";
 import { CategoryListPage } from "@/pages/CategoryListPage";
-import { CategoryFormPage } from "@/pages/CategoryFormPage";
-import { ProductFormPage } from "@/pages/ProductFormPage";
 import { ProductListPage } from "@/pages/ProductListPageUser";
 import { ProductListPageV2 } from "@/pages/ProductListPageV2";
 import { ProductDetailsPage } from "@/pages/ProductDetailsPage";
@@ -14,6 +12,7 @@ import CarrinhoDetailsPage from "@/components/CarrinhoDetailsPage";
 import { PrivateRoutes } from "../PrivateRoutes";
 import { ResumoPage } from "@/pages/ResumoPage";
 import OrdersPage from "@/pages/OrdersPage";
+import PedidoDetailsPage from "@/pages/PedidoDetailsPage";
 
 //import { ProductFormPageV2 } from "@/pages/ProductFormPageV2";
 
@@ -44,6 +43,7 @@ export function BaseRoutes() {
         <Route element={<PrivateRoutes />}>
           <Route path="/resumoPage" element={<ResumoPage />} />
           <Route path="/OrdersPage" element={<OrdersPage />} />
+          <Route path="/pedidoDetailsPage/:id" element={<PedidoDetailsPage />}/>
         </Route>
       </Routes>
     </>

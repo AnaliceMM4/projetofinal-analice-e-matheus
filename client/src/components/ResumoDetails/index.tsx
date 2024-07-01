@@ -32,24 +32,26 @@ const ResumoPedidoPage: React.FC = () => {
 
   const handleFinalizarCompra = async () => {
     const total = calculateTotalPrice();
-
+  
     // Construção do objeto pedido no formato esperado
     const pedido = {
       paymentTypes: formaPagamento,
-      requestItens: products.map(product => ({
+      requestItens: products.map((product) => ({
         product: { id: product.id },
-        quantidade: quantities[product.id] || 1
-      }))
+        quantidade: quantities[product.id] || 1,
+      })),
     };
-
+  
     try {
-      const response = await OrderService.saveOrder(pedido as IOrder); // Chama o método saveOrder do OrderService
-      console.log('Pedido salvo com sucesso:', response.data); // Exemplo de tratamento de sucesso
-      localStorage.removeItem('pedido'); // Remove o pedido do localStorage após salvar
-      navigate('/pedido/confirmacao'); // Navega para a página de confirmação do pedido
+      const response = await OrderService.saveOrder(pedido as IOrder);
+      console.log('Pedido salvo com sucesso:', response.data);
+      localStorage.removeItem('pedido');
+      localStorage.removeItem('cart');
+      localStorage.removeItem('quantities');
+      navigate('/home');
+    
     } catch (error) {
-      console.error('Erro ao salvar o pedido:', error); // Tratamento de erro
-      // Aqui você pode adicionar lógica para lidar com erros, como exibir uma mensagem para o usuário
+      console.error('Erro ao salvar o pedido:', error);
     }
   };
 

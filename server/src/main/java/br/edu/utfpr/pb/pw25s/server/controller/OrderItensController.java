@@ -9,12 +9,16 @@ import br.edu.utfpr.pb.pw25s.server.dto.OrderItensDTO;
 import br.edu.utfpr.pb.pw25s.server.dto.UserDTO;
 import br.edu.utfpr.pb.pw25s.server.model.Order;
 import br.edu.utfpr.pb.pw25s.server.model.OrderItens;
+import br.edu.utfpr.pb.pw25s.server.model.User;
+import br.edu.utfpr.pb.pw25s.server.service.AuthService;
 import br.edu.utfpr.pb.pw25s.server.service.ICrudService;
 import br.edu.utfpr.pb.pw25s.server.service.impl.OrderItensServiceImpl;
 import br.edu.utfpr.pb.pw25s.server.service.impl.OrderServiceImpl;
 import br.edu.utfpr.pb.pw25s.server.shared.GenericResponse;
 import jakarta.validation.Valid;
 import java.io.Serializable;
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderItensController extends CrudController<OrderItens, OrderItensDTO, Long> {
 
     private final OrderItensServiceImpl orderItensService;
+
     private final ModelMapper modelMapper;
 
     public OrderItensController(OrderItensServiceImpl orderItensService, ModelMapper modelMapper) {
@@ -56,38 +62,14 @@ public class OrderItensController extends CrudController<OrderItens, OrderItensD
         return modelMapper;
     }
 
-    /*@PostMapping("/adicionarNoCarrinho")
-    public ResponseEntity<GenericResponse> add(@Valid @RequestBody OrderItensDTO requestItens) {
-
-        OrderItens requestItensEntity = modelMapper.map(requestItens, OrderItens.class);
-        
-        System.out.println("Order entity mapped: " + requestItensEntity);
-        if (requestItensEntity != null) {
-            requestItensService.save(requestItensEntity);
-            GenericResponse genericResponse = new GenericResponse();
-            genericResponse.setMessage("Order saved.");
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(genericResponse);
+    @GetMapping("/listarDetalhesDoPedido/{orderId}")
+    public ResponseEntity<?> listarDetalhesDoPedido(@PathVariable Long orderId) {
+        List<OrderItens> itensPedido = orderItensService.findItensByOrder(orderId);
+        if (itensPedido != null && !itensPedido.isEmpty()) {
+            return ResponseEntity.ok(itensPedido);
         } else {
             return ResponseEntity.noContent().build();
         }
     }
-*/
-    
-    
-    @GetMapping("/listarDetalhesDoPedido")
-    public ResponseEntity<?> listarCarrinho() {
-        List<OrderItens> requestItens = orderItensService.findAll();
-        List<OrderItensDTO> requestItensDTOList = requestItens.stream()
-                .map(requestItem -> modelMapper.map(requestItem, OrderItensDTO.class))
-                .collect(Collectors.toList());
-        if (requestItensDTOList != null) {
-            return ResponseEntity.ok(requestItensDTOList);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
-    }
-    
-   
 
 }

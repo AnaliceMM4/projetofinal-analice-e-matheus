@@ -14,13 +14,13 @@ const saveOrder = async (order: IOrder): Promise<any> => {
 };
 
 const findRequestsByUser = async (): Promise<any> => {
+  let response;
   try {
-    const response = await api.get(`${orderURL}/list`);
-    return response.data; // Retorna os dados da resposta, se necessário
+    response = await api.get(`${orderURL}/list`);
   } catch (err: any) {
-    // Em caso de erro, retorna o erro para tratamento no componente que chamou `findRequestsByUser`
-    return err.response;
+    response = err.response;
   }
+  return response;
 };
 
 const OrderService = {

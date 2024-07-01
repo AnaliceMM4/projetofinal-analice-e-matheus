@@ -4,6 +4,7 @@
  */
 package br.edu.utfpr.pb.pw25s.server.service.impl;
 
+import br.edu.utfpr.pb.pw25s.server.dto.OrderDTO;
 import br.edu.utfpr.pb.pw25s.server.dto.OrderItensDTO;
 import br.edu.utfpr.pb.pw25s.server.model.Product;
 import br.edu.utfpr.pb.pw25s.server.model.Order;
@@ -16,6 +17,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import br.edu.utfpr.pb.pw25s.server.service.IOrderItensService;
 import br.edu.utfpr.pb.pw25s.server.repository.OrderItensRepository;
+import java.util.List;
 
 /**
  *
@@ -43,7 +45,6 @@ public class OrderItensServiceImpl extends CrudServiceImpl<OrderItens, Long> imp
         Product product = productOptional.get();
         OrderItens entity = new OrderItens();
         Order request = orderItemsDTO.getRequest();
-        
 
         if (product != null) {
             entity.setId(orderItemsDTO.getId());
@@ -51,9 +52,13 @@ public class OrderItensServiceImpl extends CrudServiceImpl<OrderItens, Long> imp
             entity.setPreco(product.getPrice().multiply(BigDecimal.valueOf(orderItemsDTO.getQuantidade())));
             entity.setQuantidade(orderItemsDTO.getQuantidade());
             entity.setProduct(product);
-                   
+
         }
 
         return orderItensRepository.save(entity);
+    }
+
+    public List<OrderItens> findItensByOrder(Long orderId) {
+        return orderItensRepository.findByRequestId(orderId);
     }
 }

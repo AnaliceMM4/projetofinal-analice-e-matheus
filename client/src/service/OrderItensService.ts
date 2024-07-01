@@ -3,10 +3,10 @@ import {IOrderItens } from "@/commons/interfaces";
 
 const orderItensURL = "/orderItens";
 
-const listOrderItens = async (): Promise<any> => {
+const listOrderItems = async (id: number): Promise<any> => {
   let response;
   try {
-    response = await api.get(`${orderItensURL}/listarDetalhesDoPedido`);
+    response = await api.get(`${orderItensURL}/listarDetalhesDoPedido/${id}`);
   } catch (err: any) {
     response = err.response;
   }
@@ -14,7 +14,7 @@ const listOrderItens = async (): Promise<any> => {
 };
 
 const OrderItensService = {
-  listOrderItens,
+  listOrderItems,
 };
 
 export default OrderItensService;
